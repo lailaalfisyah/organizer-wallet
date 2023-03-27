@@ -15,7 +15,8 @@ public class MPaymentMethod {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "m_user")
     private MUser user;
 
     @Column(name = "method")
