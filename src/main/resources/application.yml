@@ -1,0 +1,38 @@
+server:
+  port: 3000
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/organizer-wallet?currentSchema=public
+    hikari:
+      connection-timeout: 20000
+      idle-timeout: 20000
+      maximum-pool-size: 4
+      minimum-idle: 2
+      username: postgres
+      password: myapp-Laila
+      max-lifetime: 30000
+      pool-name: HKPoolMaster
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+spring-doc:
+  swagger-ui:
+    path: /swagger-ui.html
