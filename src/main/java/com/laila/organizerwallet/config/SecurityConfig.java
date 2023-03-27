@@ -29,7 +29,7 @@ public class SecurityConfig {
         List<RequestMatcher> whiteLists = new ArrayList<>();
         whiteLists.add(new AntPathRequestMatcher("/auth/**", HttpMethod.POST.name()));
         whiteLists.add(new AntPathRequestMatcher("/**", HttpMethod.OPTIONS.name()));
-        whiteLists.add(new AntPathRequestMatcher("/v2/api-docs"));
+        whiteLists.add(new AntPathRequestMatcher("/v3/api-docs"));
         whiteLists.add(new AntPathRequestMatcher("/swagger-resources/**"));
         whiteLists.add(new AntPathRequestMatcher("/swagger-ui/**"));
         whiteLists.add(new AntPathRequestMatcher("/webjars/**"));
