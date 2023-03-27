@@ -1,6 +1,6 @@
 package com.laila.organizerwallet.controller.paymentmethod;
 
-import com.laila.organizerwallet.datasource.entity.PaymentMethod;
+import com.laila.organizerwallet.datasource.entity.MPaymentMethod;
 import com.laila.organizerwallet.datasource.repo.PaymentMethodRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class PaymentMethodController {
     PaymentMethodRepo paymentMethodRepo;
     @GetMapping
     public ResponseEntity<?> getPaymentMethod() {
-        List<PaymentMethod> paymentMethods = paymentMethodRepo.findAll();
+        List<MPaymentMethod> paymentMethods = paymentMethodRepo.findAll();
         return ResponseEntity.ok(paymentMethods);
     }
 }
