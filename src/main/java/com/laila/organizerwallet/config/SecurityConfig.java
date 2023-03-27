@@ -32,7 +32,6 @@ public class SecurityConfig {
         whiteLists.add(new AntPathRequestMatcher("/v2/api-docs"));
         whiteLists.add(new AntPathRequestMatcher("/swagger-resources/**"));
         whiteLists.add(new AntPathRequestMatcher("/swagger-ui/**"));
-        whiteLists.add(new AntPathRequestMatcher("/swagger-ui.html"));
         whiteLists.add(new AntPathRequestMatcher("/webjars/**"));
 
 //        http
