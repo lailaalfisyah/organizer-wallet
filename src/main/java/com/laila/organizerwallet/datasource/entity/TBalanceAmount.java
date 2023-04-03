@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "t_balance_amount")
 public class TBalanceAmount {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

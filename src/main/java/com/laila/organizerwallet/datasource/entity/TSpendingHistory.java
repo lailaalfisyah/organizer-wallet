@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "t_spending_history")
 public class TSpendingHistory {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

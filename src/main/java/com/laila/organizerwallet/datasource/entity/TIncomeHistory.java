@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "t_income_history")
 public class TIncomeHistory {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
