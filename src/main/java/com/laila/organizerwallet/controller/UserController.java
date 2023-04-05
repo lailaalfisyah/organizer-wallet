@@ -1,4 +1,4 @@
-package com.laila.organizerwallet.controller.paymentmethod;
+package com.laila.organizerwallet.controller;
 
 import com.laila.organizerwallet.model.user.RegisterReq;
 import com.laila.organizerwallet.service.UserService;

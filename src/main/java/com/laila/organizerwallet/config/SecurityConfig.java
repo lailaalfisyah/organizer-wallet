@@ -21,8 +21,8 @@ import java.util.List;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-//    private final JwtAuthenticationFilter jwtAuthFilter;
-//    private final AuthenticationProvider authenticationProvider;
+    private final JwtAuthenticationFilter jwtAuthFilter;
+    private final AuthenticationProvider authenticationProvider;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -34,25 +34,25 @@ public class SecurityConfig {
         whiteLists.add(new AntPathRequestMatcher("/swagger-ui/**"));
         whiteLists.add(new AntPathRequestMatcher("/webjars/**"));
 
-//        http
-//                .cors()
-//                .and()
-//                .csrf()
-//                .disable()
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and()
-//                .authorizeHttpRequests()
-//                .requestMatchers(whiteLists.toArray(new RequestMatcher[]{}))
-//                .permitAll()
-//                .anyRequest()
-//                .authenticated()
-//                .and()
-//                .authenticationProvider(authenticationProvider)
-//                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+        http
+                .cors()
+                .and()
+                .csrf()
+                .disable()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers(whiteLists.toArray(new RequestMatcher[]{}))
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-        http.authorizeHttpRequests().requestMatchers("/**").permitAll();
-        http.cors().and().csrf().disable();
+//        http.authorizeHttpRequests().requestMatchers("/**").permitAll();
+//        http.cors().and().csrf().disable();
 
         return http.build();
     }

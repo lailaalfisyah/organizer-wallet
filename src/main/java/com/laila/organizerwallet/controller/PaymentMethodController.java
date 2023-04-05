@@ -1,4 +1,4 @@
-package com.laila.organizerwallet.controller.paymentmethod;
+package com.laila.organizerwallet.controller;
 
 import com.laila.organizerwallet.datasource.entity.MPaymentMethod;
 import com.laila.organizerwallet.datasource.repo.PaymentMethodRepo;

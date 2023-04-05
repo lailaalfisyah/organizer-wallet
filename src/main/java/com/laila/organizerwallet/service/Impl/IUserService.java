@@ -8,6 +8,8 @@ import com.laila.organizerwallet.model.TableCodeConstant;
 import com.laila.organizerwallet.model.user.RegisterReq;
 import com.laila.organizerwallet.service.GenerateIdService;
 import com.laila.organizerwallet.service.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,11 +19,13 @@ public class IUserService implements UserService {
     private final FinancialPeriodRepo financialPeriodRepo;
     private final UserRepo userRepo;
     private final GenerateIdService generateIdService;
+    private final PasswordEncoder passwordEncoder;
 
-    public IUserService(FinancialPeriodRepo financialPeriodRepo, UserRepo userRepo, GenerateIdService generateIdService) {
+    public IUserService(FinancialPeriodRepo financialPeriodRepo, UserRepo userRepo, GenerateIdService generateIdService, PasswordEncoder passwordEncoder) {
         this.financialPeriodRepo = financialPeriodRepo;
         this.userRepo = userRepo;
         this.generateIdService = generateIdService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -49,10 +53,10 @@ public class IUserService implements UserService {
 
         Optional<MFinancialPeriod> financialPeriod = financialPeriodRepo.findById(registerReq.getFinancialPeriodDate());
         MUser user = new MUser();
-//        user.setId(generateIdService.generateId("m_user", TableCodeConstant.M_USER));
+        user.setId(generateIdService.generateId("m_user", TableCodeConstant.M_USER));
         user.setFullname(registerReq.getFullname());
         user.setEmail(registerReq.getEmail());
-        user.setPassword(registerReq.getPassword());
+        user.setPassword(passwordEncoder.encode(registerReq.getPassword()));
         user.setFinancialPeriod(financialPeriod.get());
         userRepo.save(user);
     }
