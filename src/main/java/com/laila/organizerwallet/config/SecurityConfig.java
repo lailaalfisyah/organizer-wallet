@@ -27,7 +27,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         List<RequestMatcher> whiteLists = new ArrayList<>();
-        whiteLists.add(new AntPathRequestMatcher("/auth/**", HttpMethod.POST.name()));
+        whiteLists.add(new AntPathRequestMatcher("/api/user/auth/**", HttpMethod.POST.name()));
         whiteLists.add(new AntPathRequestMatcher("/**", HttpMethod.OPTIONS.name()));
         whiteLists.add(new AntPathRequestMatcher("/v3/api-docs"));
         whiteLists.add(new AntPathRequestMatcher("/swagger-resources/**"));
@@ -43,7 +43,8 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers(whiteLists.toArray(new RequestMatcher[]{}))
+//                .requestMatchers(whiteLists.toArray(new RequestMatcher[]{}))
+                .requestMatchers("/api/user/auth/**", "/swagger-ui/**", "/v3/api-docs/**", "/api/loadPicture/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

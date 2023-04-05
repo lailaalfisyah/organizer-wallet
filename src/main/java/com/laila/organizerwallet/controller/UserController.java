@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     private final UserService userService;
 
@@ -19,7 +19,7 @@ public class UserController {
     }
 
     @Operation(summary = "User Registration")
-    @PostMapping("/register")
+    @PostMapping("/auth/register")
     public ResponseEntity<?> register(@RequestBody RegisterReq registerReq) {
         userService.register(registerReq);
         return ResponseEntity.ok("Success");
